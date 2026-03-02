@@ -1,0 +1,1 @@
+console.log("Backend placeholder - Phase 1 initialized");
