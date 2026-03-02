@@ -1,15 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
+/* ===============================
+   THEME TOKENS (Tailwind v4)
+================================= */
 
-  --primary: 262 83% 58%;
-  --muted: 215 20% 65%;
-  --border: 217 33% 17%;
+@theme {
+  --color-background: hsl(222 47% 11%);
+  --color-foreground: hsl(210 40% 98%);
+
+  --color-primary: hsl(262 83% 58%);
+  --color-primary-foreground: hsl(210 40% 98%);
+
+  --color-muted: hsl(217 33% 17%);
+  --color-muted-foreground: hsl(215 20% 65%);
+
+  --color-border: hsl(217 33% 20%);
+
+  --color-card: hsl(222 47% 13%);
+  --color-card-foreground: hsl(210 40% 98%);
 
   --radius: 0.75rem;
 }
+
+/* ===============================
+   BASE
+================================= */
 
 html,
 body {
@@ -17,7 +32,5 @@ body {
 }
 
 body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-  -webkit-font-smoothing: antialiased;
+  @apply bg-background text-foreground antialiased;
 }
