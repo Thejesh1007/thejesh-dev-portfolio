@@ -13,11 +13,16 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-          <Link href="/projects">Projects</Link>
-          <Link href="/resume">Resume</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-
+  <Link className="hover:text-foreground transition" href="/projects">
+    Projects
+  </Link>
+  <Link className="hover:text-foreground transition" href="/resume">
+    Resume
+  </Link>
+  <Link className="hover:text-foreground transition" href="/contact">
+    Contact
+  </Link>
+</nav>
         <Button size="sm">Hire Me</Button>
       </Container>
     </header>
