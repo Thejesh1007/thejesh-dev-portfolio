@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import type { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -78,7 +80,7 @@ export default async function ProjectPage({ params }: Props) {
           {data.tech?.map((tech: string) => (
             <span
               key={tech}
-              className="text-xs px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full"
+              className="text-xs px-3 py-1 bg-primary/10 text-primary rounded-full"
             >
               {tech}
             </span>
@@ -90,6 +92,7 @@ export default async function ProjectPage({ params }: Props) {
             <a
               href={data.github}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition"
             >
               GitHub
@@ -99,6 +102,7 @@ export default async function ProjectPage({ params }: Props) {
             <a
               href={data.live}
               target="_blank"
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition"
             >
               Live
@@ -109,7 +113,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="mt-10 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       </header>
 
-      <div className="prose prose-invert prose-lg max-w-none">
+      <div className="prose prose-invert prose-lg max-w-none prose-headings:tracking-tight prose-p:text-muted-foreground">
         <MDXRemote source={content} />
       </div>
     </article>

@@ -6,12 +6,27 @@ import { Navbar } from "@/components/layout/navbar";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Thejesh | Full Stack Developer",
+  metadataBase: new URL("https://your-domain.com"),
+  title: {
+    default: "Thejesh | Full Stack Developer",
+    template: "%s | Thejesh",
+  },
   description:
-    "Thejesh - Full Stack Developer & Data Engineering Enthusiast",
+    "Thejesh - Full Stack Developer focused on scalable backend systems and transitioning toward Data Engineering.",
+  openGraph: {
+    title: "Thejesh | Full Stack Developer",
+    description:
+      "Full Stack Developer focused on scalable backend systems and Data Engineering.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -21,10 +36,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans`}>
-  <Navbar />
-  <main className="pt-20">{children}</main>
-</body>
+      <body
+        className={`${inter.variable} font-sans bg-background text-foreground antialiased`}
+      >
+        <Navbar />
+        <main className="pt-20 min-h-screen">{children}</main>
+      </body>
     </html>
   );
 }
