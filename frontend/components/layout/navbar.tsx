@@ -6,24 +6,38 @@ import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white">
       <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-tight">
+
+        <Link
+          href="/"
+          className="font-semibold text-slate-900"
+        >
           Thejesh
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-  <Link className="hover:text-foreground transition" href="/projects">
-    Projects
-  </Link>
-  <Link className="hover:text-foreground transition" href="/resume">
-    Resume
-  </Link>
-  <Link className="hover:text-foreground transition" href="/contact">
-    Contact
-  </Link>
-</nav>
-        <Button size="sm">Hire Me</Button>
+        <nav className="hidden md:flex items-center gap-8 text-sm text-slate-600">
+
+          <Link href="/projects" className="hover:text-slate-900">
+            Projects
+          </Link>
+
+          <Link href="/resume" className="hover:text-slate-900">
+            Resume
+          </Link>
+
+          <Link href="/contact" className="hover:text-slate-900">
+            Contact
+          </Link>
+
+        </nav>
+
+        <a href="mailto:thejesh@example.com">
+          <Button size="sm">
+            Email
+          </Button>
+        </a>
+
       </Container>
     </header>
   );

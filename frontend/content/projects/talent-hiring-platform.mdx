@@ -1,74 +1,48 @@
 ---
-title: "Talent Hiring Platform"
-description: "A full-stack SaaS platform enabling recruiters to post jobs and candidates to apply with role-based dashboards."
-date: "2026-02-01"
-role: "Full Stack Developer"
+title: Talent Hiring Platform
+description: A full stack SaaS platform enabling recruiters to manage job postings and candidates through role-based dashboards.
 tech:
   - React
   - Node.js
   - Express
-  - Prisma
   - PostgreSQL
+  - Prisma
   - JWT
-  - TailwindCSS
-github: "https://github.com/Thejesh1007/talent-hiring-platform"
-live: ""
-featured: true
 ---
 
 ## Overview
 
-The Talent Hiring Platform is a full-stack SaaS-style web application designed to connect recruiters and candidates through a structured job application workflow.
+Talent Hiring Platform is a full stack application designed to simulate
+a real hiring workflow where recruiters can create jobs and candidates
+can submit applications.
 
-The system implements role-based access control, authentication, dashboard segregation, and a production-ready backend architecture.
+## Problem
 
----
+Many hiring platforms lack structured role separation between recruiters
+and candidates. This project focuses on implementing a clear workflow
+for job creation and application management.
 
 ## Architecture
 
-The system follows a layered architecture:
-
-- React (Vite) frontend
-- Express REST API backend
-- Prisma ORM
-- PostgreSQL database
-- JWT-based authentication
-- Role-based authorization (Candidate, Recruiter, Admin)
-
-The frontend communicates with the backend via REST endpoints secured by JWT.
-
----
+Frontend: React + Vite  
+Backend: Node.js + Express  
+Database: PostgreSQL  
+ORM: Prisma  
 
 ## Key Features
 
-- Role-based authentication
-- Recruiter dashboard for job posting
-- Candidate dashboard for job applications
-- Admin monitoring capabilities
-- Secure password hashing
-- Production deployment on Render
-- Clean SaaS dark-themed UI
+- Role-based authentication using JWT
+- Recruiter dashboard for job management
+- Candidate job application workflow
+- Admin monitoring capability
 
----
+## Challenges
 
-## Engineering Decisions
-
-Prisma was chosen for type-safe database interaction and maintainable schema evolution.
-
-JWT was used for stateless authentication to enable horizontal scalability.
-
-The system emphasizes separation of concerns:
-- Controllers
-- Routes
-- Middleware
-- Validation
-- Error handling
-
----
+Designing relational schema for users, jobs, and applications while
+ensuring clean API structure and validation.
 
 ## Future Improvements
 
-- Resume upload parsing
 - Email notifications
-- Analytics dashboard
-- Real-time notifications
+- Job search filters
+- Application analytics

@@ -1,76 +1,60 @@
-import Link from "next/link";
-import { PageWrapper } from "@/components/layout/page-wrapper";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { getAllProjects } from "@/lib/projects";
+import Link from "next/link"
+import { Container } from "@/components/layout/container"
+import { getAllProjects } from "@/lib/projects"
 
 export default function ProjectsPage() {
-  const projects = getAllProjects();
+
+  const projects = getAllProjects()
 
   return (
-    <PageWrapper>
-      <div className="space-y-16">
-        <div className="space-y-6">
-          <h1 className="h1">Projects</h1>
-          <p className="p-muted max-w-2xl">
-            A curated collection of production-grade systems and engineering projects.
-          </p>
-        </div>
+    <main className="py-20">
+      <Container className="max-w-4xl">
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <h1 className="text-3xl font-semibold mb-6">
+          Projects
+        </h1>
+
+        <p className="text-slate-600 mb-12">
+          A collection of engineering projects focused on building scalable
+          web systems and production-ready backend platforms.
+        </p>
+
+        <div className="space-y-8">
+
           {projects.map((project) => (
-            <Card key={project.slug}>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle>{project.title}</CardTitle>
-                  {project.featured && (
-                    <Badge variant="outline">Featured</Badge>
-                  )}
+            <div
+              key={project.slug}
+              className="border rounded-xl p-8 hover:shadow-sm transition"
+            >
+              <h2 className="text-xl font-semibold mb-3">
+                {project.title}
+              </h2>
+
+              <p className="text-slate-600 mb-4">
+                {project.description}
+              </p>
+
+              {project.tech && (
+                <div className="flex flex-wrap gap-3 text-sm text-slate-500 mb-4">
+                  {project.tech.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
                 </div>
-                <CardDescription>
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
+              )}
 
-              <CardContent className="flex flex-wrap gap-2">
-                {project.tech?.map((tech) => (
-                  <Badge key={tech}>{tech}</Badge>
-                ))}
-              </CardContent>
+              <Link
+                href={`/projects/${project.slug}`}
+                className="text-blue-600 hover:underline"
+              >
+                View Case Study
+              </Link>
 
-              <CardFooter className="flex justify-between items-center">
-                <Button asChild size="sm">
-                  <Link href={`/projects/${project.slug}`}>
-                    View Case Study
-                  </Link>
-                </Button>
-
-                <div className="flex gap-3">
-                  {project.github && (
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      className="text-sm text-muted-foreground hover:text-foreground transition"
-                    >
-                      GitHub
-                    </Link>
-                  )}
-                  {project.live && (
-                    <Link
-                      href={project.live}
-                      target="_blank"
-                      className="text-sm text-muted-foreground hover:text-foreground transition"
-                    >
-                      Live
-                    </Link>
-                  )}
-                </div>
-              </CardFooter>
-            </Card>
+            </div>
           ))}
+
         </div>
-      </div>
-    </PageWrapper>
-  );
+
+      </Container>
+    </main>
+  )
 }

@@ -1,18 +1,31 @@
-import { PageWrapper } from "@/components/layout/page-wrapper";
-import { MotionWrapper } from "@/components/layout/motion-wrapper";
+import { Container } from "@/components/layout/container";
 
 export function About() {
   return (
-    <PageWrapper>
-        <MotionWrapper>
-      <div className="space-y-6 max-w-3xl">
-        <h2 className="h2">About Me</h2>
-        <p className="p-muted">
-          I am a Computer Science student focused on full stack
-          development and transitioning toward data engineering.
+    <section className="section">
+
+      <Container className="max-w-3xl space-y-6">
+
+        <h2 className="h2">About</h2>
+
+        <p className="p-body">
+          I am a Computer Science student specializing in full stack development
+          with a strong interest in backend systems and scalable web platforms.
         </p>
-      </div>
-      </MotionWrapper>
-    </PageWrapper>
+
+        <p className="p-muted">
+          I enjoy designing APIs, building structured relational databases,
+          and developing production-ready applications that solve real problems.
+          My work focuses on writing clean, maintainable systems with clear architecture.
+        </p>
+
+        <p className="p-muted">
+          Currently, I am expanding my skills toward data engineering and
+          large-scale data systems while continuing to build full stack platforms.
+        </p>
+
+      </Container>
+
+    </section>
   );
 }
