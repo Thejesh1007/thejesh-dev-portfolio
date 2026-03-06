@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Container } from "@/components/layout/container"
+import { Badge } from "@/components/ui/badge"
 import { getAllProjects } from "@/lib/projects"
 
 export default function ProjectsPage() {
@@ -7,54 +8,81 @@ export default function ProjectsPage() {
   const projects = getAllProjects()
 
   return (
-    <main className="py-20">
-      <Container className="max-w-4xl">
+    <main className="section">
 
-        <h1 className="text-3xl font-semibold mb-6">
-          Projects
-        </h1>
+      <Container className="max-w-4xl space-y-12">
 
-        <p className="text-slate-600 mb-12">
-          A collection of engineering projects focused on building scalable
-          web systems and production-ready backend platforms.
-        </p>
+        <div className="space-y-4">
+
+          <h1 className="h2">
+            Projects
+          </h1>
+
+          <p className="p-muted">
+            A collection of engineering projects focused on building scalable
+            web systems and production-ready backend platforms.
+          </p>
+
+        </div>
 
         <div className="space-y-8">
 
           {projects.map((project) => (
+
             <div
               key={project.slug}
-              className="border rounded-xl p-8 hover:shadow-sm transition"
+              className="border border-slate-200 rounded-xl p-8 hover:shadow-md transition bg-white"
             >
-              <h2 className="text-xl font-semibold mb-3">
-                {project.title}
-              </h2>
 
-              <p className="text-slate-600 mb-4">
-                {project.description}
-              </p>
+              <div className="space-y-4">
 
-              {project.tech && (
-                <div className="flex flex-wrap gap-3 text-sm text-slate-500 mb-4">
-                  {project.tech.map((t) => (
-                    <span key={t}>{t}</span>
-                  ))}
+                <h2 className="h3">
+                  {project.title}
+                </h2>
+
+                <p className="p-body">
+                  {project.description}
+                </p>
+
+                {project.tech && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((t) => (
+                      <Badge key={t}>{t}</Badge>
+                    ))}
+                  </div>
+                )}
+
+                <div className="flex gap-6 text-sm">
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    View Case Study
+                  </Link>
+
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      className="text-blue-600 hover:underline"
+                    >
+                      GitHub
+                    </a>
+                  )}
+
                 </div>
-              )}
 
-              <Link
-                href={`/projects/${project.slug}`}
-                className="text-blue-600 hover:underline"
-              >
-                View Case Study
-              </Link>
+              </div>
 
             </div>
+
           ))}
 
         </div>
 
       </Container>
+
     </main>
   )
 }

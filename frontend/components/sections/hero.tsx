@@ -13,24 +13,24 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-32 pb-24">
+    <section className="section">
 
       <Container>
 
-        <div className="max-w-4xl space-y-8">
+        <div className="max-w-3xl space-y-8">
 
-          <p className="text-sm tracking-wide text-slate-500">
-            FULL STACK ENGINEER
+          <p className="text-sm tracking-wider text-slate-500 uppercase">
+            Backend-Focused Full Stack Engineer
           </p>
 
-          <h1>
-            I build scalable backend systems and production-ready web platforms.
+          <h1 className="h1">
+            Building scalable APIs and production-ready web systems.
           </h1>
 
-          <p className="text-lg max-w-3xl">
-            Computer Science student focused on full stack engineering,
-            backend architecture, and building reliable production systems.
-            Currently transitioning toward data engineering and large-scale systems.
+          <p className="p-body">
+            Computer Science student focused on backend architecture,
+            API design, and building reliable production systems.
+            Currently expanding into data engineering and large-scale systems.
           </p>
 
           <div className="flex gap-4">

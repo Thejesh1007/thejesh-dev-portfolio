@@ -18,11 +18,13 @@ export type Project = {
 }
 
 export function getAllProjects(): Project[] {
+
   if (!fs.existsSync(projectsDirectory)) return []
 
   const files = fs.readdirSync(projectsDirectory)
 
   return files.map((file) => {
+
     const filePath = path.join(projectsDirectory, file)
     const source = fs.readFileSync(filePath, "utf-8")
 
@@ -30,8 +32,15 @@ export function getAllProjects(): Project[] {
 
     return {
       slug: file.replace(".mdx", ""),
-      ...data,
-    } as Project
+      title: data.title || "",
+      description: data.description || "",
+      date: data.date || "",
+      role: data.role || "",
+      tech: data.tech || [],
+      github: data.github || "",
+      live: data.live || "",
+      featured: data.featured || false,
+    }
   })
 }
 
@@ -47,7 +56,14 @@ export function getProjectBySlug(slug: string): Project | null {
 
   return {
     slug,
+    title: data.title || "",
+    description: data.description || "",
+    date: data.date || "",
+    role: data.role || "",
+    tech: data.tech || [],
+    github: data.github || "",
+    live: data.live || "",
+    featured: data.featured || false,
     content,
-    ...data,
-  } as Project
+  }
 }

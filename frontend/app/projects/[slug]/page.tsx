@@ -1,6 +1,10 @@
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import { Container } from "@/components/layout/container"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { getProjectBySlug, getAllProjects } from "@/lib/projects"
+import { MDXRemote } from "next-mdx-remote/rsc"
 
 export async function generateStaticParams() {
 
@@ -26,42 +30,64 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="py-20">
-      <Container className="max-w-3xl">
+    <main className="section">
 
-        <h1 className="text-3xl font-semibold mb-6">
-          {project.title}
-        </h1>
+      <Container className="max-w-4xl space-y-16">
 
-        <p className="text-slate-600 mb-8">
-          {project.description}
-        </p>
+        {/* Project Header */}
 
-        {project.tech && (
-          <div className="flex flex-wrap gap-3 text-sm text-slate-500 mb-8">
-            {project.tech.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
+        <header className="space-y-6">
+
+          <h1 className="h1">
+            {project.title}
+          </h1>
+
+          <p className="p-body max-w-2xl">
+            {project.description}
+          </p>
+
+          {project.tech && (
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech) => (
+                <Badge key={tech}>
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          )}
+
+          <div className="flex gap-4 pt-2">
+
+            {project.github && (
+              <a href={project.github} target="_blank">
+                <Button>
+                  View Source
+                </Button>
+              </a>
+            )}
+
+            <Link href="/projects">
+              <Button variant="outline">
+                Back to Projects
+              </Button>
+            </Link>
+
           </div>
-        )}
+
+        </header>
+
+        {/* Case Study Content */}
 
         {project.content && (
-          <div className="prose prose-slate max-w-none">
-            {project.content}
-          </div>
-        )}
+          <article className="max-w-none space-y-6">
 
-        {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            className="inline-block mt-10 text-blue-600 hover:underline"
-          >
-            View Source on GitHub
-          </a>
+            <MDXRemote source={project.content} />
+
+          </article>
         )}
 
       </Container>
+
     </main>
   )
 }
